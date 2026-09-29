@@ -1,0 +1,2370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Math Magic World - Grade 1</title>
+
+<style>
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: #f7f9ff;
+    color: #333;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+:root {
+    --purple: #7957e8;
+    --blue: #4da6ff;
+    --pink: #ff6fae;
+    --yellow: #ffd84d;
+    --orange: #ff9f43;
+    --green: #38c98b;
+    --red: #ff6b6b;
+    --dark: #34345c;
+    --white: #ffffff;
+}
+
+
+
+.cloud {
+    position: fixed;
+    font-size: 70px;
+    opacity: .18;
+    pointer-events: none;
+    z-index: -1;
+    animation: floatCloud 8s ease-in-out infinite;
+}
+
+.cloud.one {
+    top: 120px;
+    left: 3%;
+}
+
+.cloud.two {
+    top: 480px;
+    right: 4%;
+    animation-delay: 2s;
+}
+
+.cloud.three {
+    top: 900px;
+    left: 10%;
+    animation-delay: 4s;
+}
+
+@keyframes floatCloud {
+    0%,100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(35px);
+    }
+}
+
+
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 14px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 16px;
+    background: linear-gradient(135deg,#7957e8,#ff6fae);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    box-shadow: 0 5px 12px rgba(121,87,232,.3);
+}
+
+.logo h1 {
+    font-size: 22px;
+    color: var(--dark);
+}
+
+.logo p {
+    font-size: 12px;
+    color: #777;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.star-counter {
+    background: #fff4bd;
+    color: #8b6500;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 3px 8px rgba(0,0,0,.08);
+}
+
+.home-btn {
+    border: none;
+    background: var(--purple);
+    color: white;
+    padding: 10px 17px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.home-btn:hover {
+    transform: scale(1.05);
+    background: #6545d5;
+}
+
+
+
+.hero {
+    max-width: 1200px;
+    margin: 25px auto;
+    padding: 45px;
+    border-radius: 35px;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(135deg,#7657e8,#a86ff0,#ff70a9);
+    color: white;
+    box-shadow: 0 15px 35px rgba(121,87,232,.25);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.1);
+    right: -80px;
+    top: -100px;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.1);
+    left: 45%;
+    bottom: -100px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.hero h2 {
+    font-size: clamp(30px,5vw,54px);
+    margin-bottom: 12px;
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.hero-btn {
+    border: none;
+    padding: 13px 23px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.hero-btn.primary {
+    background: white;
+    color: var(--purple);
+}
+
+.hero-btn.secondary {
+    background: rgba(255,255,255,.2);
+    color: white;
+    border: 2px solid rgba(255,255,255,.7);
+}
+
+.hero-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+
+
+.hero-character {
+    position: absolute;
+    right: 70px;
+    bottom: 15px;
+    font-size: 130px;
+    animation: characterBounce 2.5s infinite;
+    z-index: 2;
+}
+
+@keyframes characterBounce {
+    0%,100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-18px) rotate(2deg);
+    }
+}
+
+
+
+.container {
+    width: min(1200px,92%);
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin: 50px 0 25px;
+}
+
+.section-title h2 {
+    color: var(--dark);
+    font-size: 32px;
+}
+
+.section-title p {
+    color: #777;
+    margin-top: 8px;
+}
+
+
+
+.progress-panel {
+    background: white;
+    border-radius: 25px;
+    padding: 22px;
+    margin: 25px 0;
+    box-shadow: 0 8px 25px rgba(0,0,0,.07);
+}
+
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.progress-bar {
+    height: 16px;
+    border-radius: 20px;
+    background: #ececff;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 20px;
+    background: linear-gradient(90deg,#38c98b,#4da6ff,#7957e8);
+    transition: width .5s;
+}
+
+
+
+.lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 22px;
+}
+
+.lesson-card {
+    position: relative;
+    overflow: hidden;
+    background: white;
+    border-radius: 25px;
+    padding: 24px;
+    min-height: 290px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
+    cursor: pointer;
+    transition: .25s;
+    border: 3px solid transparent;
+}
+
+.lesson-card:hover {
+    transform: translateY(-8px) rotate(-1deg);
+    box-shadow: 0 15px 35px rgba(0,0,0,.14);
+}
+
+.lesson-card::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    right: -50px;
+    bottom: -55px;
+    opacity: .18;
+}
+
+.lesson-card:nth-child(1) {
+    border-color: #50d89e;
+}
+
+.lesson-card:nth-child(1)::after {
+    background: #38c98b;
+}
+
+.lesson-card:nth-child(2) {
+    border-color: #55a9ff;
+}
+
+.lesson-card:nth-child(2)::after {
+    background: #4da6ff;
+}
+
+.lesson-card:nth-child(3) {
+    border-color: #ff8a72;
+}
+
+.lesson-card:nth-child(3)::after {
+    background: #ff6b6b;
+}
+
+.lesson-card:nth-child(4) {
+    border-color: #bd78f4;
+}
+
+.lesson-card:nth-child(4)::after {
+    background: #a86ff0;
+}
+
+.lesson-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 46px;
+    margin-bottom: 15px;
+}
+
+.lesson-card:nth-child(1) .lesson-icon {
+    background: #ddfff0;
+}
+
+.lesson-card:nth-child(2) .lesson-icon {
+    background: #e3f2ff;
+}
+
+.lesson-card:nth-child(3) .lesson-icon {
+    background: #ffe9e4;
+}
+
+.lesson-card:nth-child(4) .lesson-icon {
+    background: #f1e5ff;
+}
+
+.lesson-card h3 {
+    color: var(--dark);
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.lesson-card p {
+    color: #777;
+    line-height: 1.5;
+}
+
+.lesson-start {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 9px 16px;
+    border-radius: 20px;
+    background: #f1f1ff;
+    color: var(--purple);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.topic-stars {
+    margin-top: 12px;
+    color: #e7a800;
+}
+
+
+
+.activity-box {
+    margin: 55px 0;
+    background: linear-gradient(135deg,#fff8dc,#fff);
+    border: 3px dashed #ffd34e;
+    border-radius: 30px;
+    padding: 30px;
+    text-align: center;
+}
+
+.activity-box h2 {
+    color: #e19d00;
+    margin-bottom: 10px;
+}
+
+.activity-box p {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.challenge-btn {
+    border: none;
+    background: #ffb82e;
+    color: white;
+    padding: 13px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #d99100;
+}
+
+.challenge-btn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+
+
+#quizScreen {
+    display: none;
+    min-height: 600px;
+    margin: 35px 0;
+}
+
+.quiz-box {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    border-radius: 30px;
+    padding: 35px;
+    box-shadow: 0 12px 35px rgba(0,0,0,.1);
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.quiz-title {
+    color: var(--purple);
+}
+
+.question-number {
+    background: #f0ecff;
+    color: var(--purple);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.quiz-progress {
+    height: 12px;
+    background: #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.quiz-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,#ff6fae,#7957e8);
+    transition: .4s;
+}
+
+.question-picture {
+    font-size: 100px;
+    text-align: center;
+    min-height: 125px;
+    animation: questionPop .4s;
+}
+
+@keyframes questionPop {
+    from {
+        transform: scale(.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.question-text {
+    text-align: center;
+    font-size: 30px;
+    color: var(--dark);
+    margin: 20px 0 25px;
+}
+
+.answer-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+    max-width: 650px;
+    margin: auto;
+}
+
+.answer {
+    border: 3px solid #e7e7f7;
+    background: #fafaff;
+    border-radius: 20px;
+    padding: 18px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--dark);
+    transition: .2s;
+}
+
+.answer:hover {
+    background: #eeeaff;
+    border-color: #9b83f2;
+    transform: scale(1.03);
+}
+
+.answer.correct {
+    background: #d9ffec;
+    border-color: #38c98b;
+    color: #168458;
+}
+
+.answer.wrong {
+    background: #ffe0e0;
+    border-color: #ff6b6b;
+    color: #c74343;
+}
+
+.answer:disabled {
+    cursor: default;
+}
+
+.feedback {
+    min-height: 50px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.feedback.correct-text {
+    color: #20a66d;
+}
+
+.feedback.wrong-text {
+    color: #e55353;
+}
+
+.next-btn {
+    display: block;
+    margin: 15px auto 0;
+    border: none;
+    background: var(--purple);
+    color: white;
+    padding: 13px 28px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    display: none;
+}
+
+.next-btn:hover {
+    background: #6042d1;
+    transform: scale(1.04);
+}
+
+
+
+.back-btn {
+    border: none;
+    background: #eeeeff;
+    color: var(--purple);
+    padding: 10px 17px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+
+.badges {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 18px;
+    margin: 25px 0 60px;
+}
+
+.badge {
+    background: white;
+    border-radius: 22px;
+    padding: 22px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,.07);
+    opacity: .45;
+    filter: grayscale(1);
+    transition: .3s;
+}
+
+.badge.unlocked {
+    opacity: 1;
+    filter: none;
+    transform: translateY(-3px);
+}
+
+.badge-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.badge h4 {
+    color: var(--dark);
+    margin-bottom: 5px;
+}
+
+.badge p {
+    color: #888;
+    font-size: 13px;
+}
+
+
+
+footer {
+    background: #34345c;
+    color: white;
+    margin-top: 50px;
+    padding: 35px 20px;
+    text-align: center;
+}
+
+footer h3 {
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+footer p {
+    color: #d8d8ec;
+    margin: 5px;
+}
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(30,30,70,.7);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    width: min(500px,95%);
+    background: white;
+    border-radius: 35px;
+    padding: 35px;
+    text-align: center;
+    position: relative;
+    animation: modalIn .4s;
+}
+
+@keyframes modalIn {
+    from {
+        transform: scale(.6) translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-character {
+    font-size: 90px;
+    animation: characterBounce 1.5s infinite;
+}
+
+.modal-box h2 {
+    color: var(--purple);
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+.modal-box p {
+    color: #777;
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.modal-stars {
+    color: #e9a500;
+    font-size: 30px;
+    margin: 15px;
+}
+
+.close-modal {
+    border: none;
+    background: var(--purple);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 12px;
+    height: 18px;
+    z-index: 3000;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+
+
+.math-float {
+    position: fixed;
+    z-index: -1;
+    font-size: 28px;
+    opacity: .15;
+    animation: floatMath 7s infinite ease-in-out;
+}
+
+.m1 {
+    top: 25%;
+    left: 4%;
+}
+
+.m2 {
+    top: 60%;
+    right: 5%;
+    animation-delay: 1s;
+}
+
+.m3 {
+    top: 82%;
+    left: 7%;
+    animation-delay: 2s;
+}
+
+.m4 {
+    top: 38%;
+    right: 9%;
+    animation-delay: 3s;
+}
+
+@keyframes floatMath {
+    0%,100% {
+        transform: translateY(0) rotate(0);
+    }
+    50% {
+        transform: translateY(-30px) rotate(15deg);
+    }
+}
+
+
+
+@media(max-width:1000px) {
+    .lesson-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .badges {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .hero-character {
+        right: 30px;
+        font-size: 100px;
+    }
+}
+
+@media(max-width:700px) {
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 30px 22px;
+        text-align: center;
+    }
+
+    .hero-character {
+        position: static;
+        display: block;
+        margin-top: 20px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .lesson-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .answer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .badges {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .quiz-box {
+        padding: 22px;
+    }
+
+    .question-text {
+        font-size: 24px;
+    }
+}
+
+@media(max-width:450px) {
+
+    .logo h1 {
+        font-size: 18px;
+    }
+
+    .star-counter {
+        padding: 8px 12px;
+    }
+
+    .home-btn {
+        padding: 8px 12px;
+    }
+
+    .hero h2 {
+        font-size: 30px;
+    }
+
+    .badges {
+        grid-template-columns: 1fr;
+    }
+
+    .question-picture {
+        font-size: 75px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Decorative background -->
+
+<div class="cloud one">☁️</div>
+<div class="cloud two">☁️</div>
+<div class="cloud three">☁️</div>
+
+<div class="math-float m1">➕</div>
+<div class="math-float m2">🔢</div>
+<div class="math-float m3">⭐</div>
+<div class="math-float m4">➖</div>
+
+
+
+
+<header>
+
+<div class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🧮
+        </div>
+
+        <div>
+            <h1>Math Magic World</h1>
+            <p>Grade 1 Learning Adventure</p>
+        </div>
+
+    </div>
+
+
+    <div class="nav-right">
+
+        <div class="star-counter">
+            ⭐ <span id="starCount">0</span>
+        </div>
+
+        <button class="home-btn" onclick="goHome()">
+            🏠 Home
+        </button>
+
+    </div>
+
+</div>
+
+</header>
+
+
+
+<main id="homePage">
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h2>🌈 Welcome to Math Magic World!</h2>
+
+        <p>
+            Learn numbers, addition, subtraction, shapes,
+            and patterns while collecting stars and badges!
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="hero-btn primary"
+                onclick="scrollToLessons()">
+                🚀 Start Learning
+            </button>
+
+            <button
+                class="hero-btn secondary"
+                onclick="showHowToPlay()">
+                💡 How to Play
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-character">
+        🐰
+    </div>
+
+</section>
+
+
+<div class="container">
+
+
+
+<div class="progress-panel">
+
+    <div class="progress-top">
+
+        <span>🌟 Learning Progress</span>
+
+        <span id="progressText">
+            0%
+        </span>
+
+    </div>
+
+    <div class="progress-bar">
+
+        <div
+            class="progress-fill"
+            id="progressFill">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<div
+    class="section-title"
+    id="lessons">
+
+    <h2>📚 Pick Your Math Adventure</h2>
+
+    <p>
+        Choose a topic and start playing!
+    </p>
+
+</div>
+
+
+<div class="lesson-grid">
+
+
+<!-- COUNTING -->
+
+<div
+    class="lesson-card"
+    onclick="startLesson(0)">
+
+    <div class="lesson-icon">
+        🔢
+    </div>
+
+    <h3>Counting Castle</h3>
+
+    <p>
+        Explore numbers and learn
+        how to count from 1 to 20.
+    </p>
+
+    <div class="lesson-start">
+        Start Adventure →
+    </div>
+
+    <div class="topic-stars">
+        <span id="topicStars0">☆☆☆☆☆</span>
+    </div>
+
+</div>
+
+
+<!-- ADDITION -->
+
+<div
+    class="lesson-card"
+    onclick="startLesson(1)">
+
+    <div class="lesson-icon">
+        🍎
+    </div>
+
+    <h3>Addition Garden</h3>
+
+    <p>
+        Add apples, toys, balloons,
+        and other fun objects.
+    </p>
+
+    <div class="lesson-start">
+        Start Adventure →
+    </div>
+
+    <div class="topic-stars">
+        <span id="topicStars1">☆☆☆☆☆</span>
+    </div>
+
+</div>
+
+
+<!-- SUBTRACTION -->
+
+<div
+    class="lesson-card"
+    onclick="startLesson(2)">
+
+    <div class="lesson-icon">
+        🍪
+    </div>
+
+    <h3>Subtraction Bakery</h3>
+
+    <p>
+        Take away cookies, candies,
+        and yummy treats.
+    </p>
+
+    <div class="lesson-start">
+        Start Adventure →
+    </div>
+
+    <div class="topic-stars">
+        <span id="topicStars2">☆☆☆☆☆</span>
+    </div>
+
+</div>
+
+
+<!-- SHAPES -->
+
+<div
+    class="lesson-card"
+    onclick="startLesson(3)">
+
+    <div class="lesson-icon">
+        🔺
+    </div>
+
+    <h3>Shape Space</h3>
+
+    <p>
+        Discover circles, triangles,
+        squares, and rectangles.
+    </p>
+
+    <div class="lesson-start">
+        Start Adventure →
+    </div>
+
+    <div class="topic-stars">
+        <span id="topicStars3">☆☆☆☆☆</span>
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+<div class="activity-box">
+
+    <h2>🎯 Daily Math Challenge</h2>
+
+    <p>
+        Can you become today's Math Star?
+        Complete a lesson and earn more stars!
+    </p>
+
+    <button
+        class="challenge-btn"
+        onclick="startRandomLesson()">
+        🎮 Play Challenge
+    </button>
+
+</div>
+
+
+
+
+<div class="section-title">
+
+    <h2>🏆 Your Math Badges</h2>
+
+    <p>
+        Unlock special badges as you learn!
+    </p>
+
+</div>
+
+
+<div class="badges">
+
+
+<div
+    class="badge"
+    id="badge1">
+
+    <div class="badge-icon">
+        🔢
+    </div>
+
+    <h4>Number Explorer</h4>
+
+    <p>
+        Complete Counting
+    </p>
+
+</div>
+
+
+<div
+    class="badge"
+    id="badge2">
+
+    <div class="badge-icon">
+        ➕
+    </div>
+
+    <h4>Addition Hero</h4>
+
+    <p>
+        Complete Addition
+    </p>
+
+</div>
+
+
+<div
+    class="badge"
+    id="badge3">
+
+    <div class="badge-icon">
+        ➖
+    </div>
+
+    <h4>Subtraction Star</h4>
+
+    <p>
+        Complete Subtraction
+    </p>
+
+</div>
+
+
+<div
+    class="badge"
+    id="badge4">
+
+    <div class="badge-icon">
+        🔺
+    </div>
+
+    <h4>Shape Master</h4>
+
+    <p>
+        Complete Shapes
+    </p>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+
+
+<section
+    id="quizScreen"
+    class="container">
+
+<div class="quiz-box">
+
+    <div class="quiz-header">
+
+        <div>
+
+            <h2
+                class="quiz-title"
+                id="quizTitle">
+                Math Adventure
+            </h2>
+
+        </div>
+
+        <div
+            class="question-number"
+            id="questionNumber">
+            Question 1/5
+        </div>
+
+    </div>
+
+
+    <div class="quiz-progress">
+
+        <div
+            class="quiz-progress-fill"
+            id="quizProgress">
+        </div>
+
+    </div>
+
+
+    <div
+        class="question-picture"
+        id="questionPicture">
+        🧮
+    </div>
+
+
+    <div
+        class="question-text"
+        id="questionText">
+        Question
+    </div>
+
+
+    <div
+        class="answer-grid"
+        id="answerGrid">
+    </div>
+
+
+    <div
+        class="feedback"
+        id="feedback">
+    </div>
+
+
+    <button
+        class="next-btn"
+        id="nextButton"
+        onclick="nextQuestion()">
+        Next Question ➡️
+    </button>
+
+
+    <button
+        class="back-btn"
+        onclick="goHome()">
+        ← Back to Lessons
+    </button>
+
+</div>
+
+</section>
+
+
+
+
+<footer>
+
+    <h3>🌟 Math Magic World</h3>
+
+    <p>
+        Learning Mathematics can be fun!
+    </p>
+
+    <p>
+        © 2026 Grade 1 Mathematics
+    </p>
+
+</footer>
+
+
+
+<div
+    class="modal"
+    id="rewardModal">
+
+<div class="modal-box">
+
+    <div class="modal-character">
+        🥳
+    </div>
+
+    <h2 id="rewardTitle">
+        Great Job!
+    </h2>
+
+    <p id="rewardMessage">
+        You completed the lesson!
+    </p>
+
+    <div
+        class="modal-stars"
+        id="rewardStars">
+        ⭐⭐⭐
+    </div>
+
+    <button
+        class="close-modal"
+        onclick="closeReward()">
+        Continue Learning 🚀
+    </button>
+
+</div>
+
+</div>
+
+
+
+<div
+    class="modal"
+    id="howModal">
+
+<div class="modal-box">
+
+    <div class="modal-character">
+        🐻
+    </div>
+
+    <h2>How to Play</h2>
+
+    <p>
+        1️⃣ Choose a math lesson.
+        <br><br>
+        2️⃣ Read the question.
+        <br><br>
+        3️⃣ Choose your answer.
+        <br><br>
+        4️⃣ Get ⭐ stars for correct answers.
+        <br><br>
+        5️⃣ Complete lessons to unlock badges!
+    </p>
+
+    <br>
+
+    <button
+        class="close-modal"
+        onclick="closeHowToPlay()">
+        Let's Play! 🎮
+    </button>
+
+</div>
+
+</div>
+
+
+<script>
+
+
+
+const lessons = [
+
+    {
+        title: "🔢 Counting Castle",
+
+        questions: [
+
+            {
+                picture: "🐶🐶🐶",
+                question: "How many puppies are there?",
+                answers: ["2","3","4","5"],
+                correct: "3"
+            },
+
+            {
+                picture: "🍎🍎🍎🍎🍎",
+                question: "How many apples do you see?",
+                answers: ["4","5","6","7"],
+                correct: "5"
+            },
+
+            {
+                picture: "⭐ ⭐ ⭐ ⭐",
+                question: "How many stars are there?",
+                answers: ["3","4","5","6"],
+                correct: "4"
+            },
+
+            {
+                picture: "🐟🐟🐟🐟🐟🐟",
+                question: "How many fish are swimming?",
+                answers: ["5","6","7","8"],
+                correct: "6"
+            },
+
+            {
+                picture: "🌸🌸🌸🌸🌸🌸🌸",
+                question: "How many flowers are there?",
+                answers: ["6","7","8","9"],
+                correct: "7"
+            }
+
+        ]
+    },
+
+
+    {
+        title: "🍎 Addition Garden",
+
+        questions: [
+
+            {
+                picture: "🍎🍎 + 🍎",
+                question: "What is 2 + 1?",
+                answers: ["2","3","4","5"],
+                correct: "3"
+            },
+
+            {
+                picture: "🎈🎈 + 🎈🎈",
+                question: "What is 2 + 2?",
+                answers: ["3","4","5","6"],
+                correct: "4"
+            },
+
+            {
+                picture: "🐝🐝🐝 + 🐝",
+                question: "What is 3 + 1?",
+                answers: ["3","4","5","6"],
+                correct: "4"
+            },
+
+            {
+                picture: "🍓🍓🍓 + 🍓🍓",
+                question: "What is 3 + 2?",
+                answers: ["4","5","6","7"],
+                correct: "5"
+            },
+
+            {
+                picture: "🧸🧸🧸🧸 + 🧸",
+                question: "What is 4 + 1?",
+                answers: ["4","5","6","7"],
+                correct: "5"
+            }
+
+        ]
+    },
+
+
+    {
+        title: "🍪 Subtraction Bakery",
+
+        questions: [
+
+            {
+                picture: "🍪🍪🍪 - 🍪",
+                question: "What is 3 - 1?",
+                answers: ["1","2","3","4"],
+                correct: "2"
+            },
+
+            {
+                picture: "🍬🍬🍬🍬 - 🍬",
+                question: "What is 4 - 1?",
+                answers: ["2","3","4","5"],
+                correct: "3"
+            },
+
+            {
+                picture: "🧁🧁🧁🧁🧁 - 🧁🧁",
+                question: "What is 5 - 2?",
+                answers: ["2","3","4","5"],
+                correct: "3"
+            },
+
+            {
+                picture: "🍩🍩🍩🍩🍩🍩 - 🍩",
+                question: "What is 6 - 1?",
+                answers: ["4","5","6","7"],
+                correct: "5"
+            },
+
+            {
+                picture: "🍰🍰🍰🍰🍰 - 🍰🍰",
+                question: "What is 5 - 2?",
+                answers: ["2","3","4","5"],
+                correct: "3"
+            }
+
+        ]
+    },
+
+
+    {
+        title: "🔺 Shape Space",
+
+        questions: [
+
+            {
+                picture: "🔺",
+                question: "What shape is this?",
+                answers: ["Circle","Triangle","Square","Rectangle"],
+                correct: "Triangle"
+            },
+
+            {
+                picture: "🟢",
+                question: "What shape is round?",
+                answers: ["Triangle","Square","Circle","Rectangle"],
+                correct: "Circle"
+            },
+
+            {
+                picture: "🟦",
+                question: "Which shape has 4 equal sides?",
+                answers: ["Circle","Triangle","Square","Oval"],
+                correct: "Square"
+            },
+
+            {
+                picture: "▭",
+                question: "Which shape has two long sides?",
+                answers: ["Circle","Rectangle","Triangle","Star"],
+                correct: "Rectangle"
+            },
+
+            {
+                picture: "⭐",
+                question: "Which object has 5 points?",
+                answers: ["Circle","Square","Star","Triangle"],
+                correct: "Star"
+            }
+
+        ]
+    }
+
+];
+
+
+
+
+let currentLesson = 0;
+let currentQuestion = 0;
+let stars = Number(localStorage.getItem("mathStars")) || 0;
+
+let completed = JSON.parse(
+    localStorage.getItem("mathCompleted")
+) || [false,false,false,false];
+
+let questionAnswered = false;
+
+
+
+
+window.onload = function() {
+
+    updateStars();
+
+    updateProgress();
+
+    updateTopicStars();
+
+    updateBadges();
+
+};
+
+
+
+
+function updateStars() {
+
+    document.getElementById("starCount").textContent = stars;
+
+    localStorage.setItem(
+        "mathStars",
+        stars
+    );
+
+}
+
+
+
+
+function updateProgress() {
+
+    let completedCount =
+        completed.filter(Boolean).length;
+
+    let percent =
+        (completedCount / 4) * 100;
+
+    document.getElementById(
+        "progressFill"
+    ).style.width = percent + "%";
+
+    document.getElementById(
+        "progressText"
+    ).textContent = percent + "%";
+
+}
+
+
+
+
+function updateTopicStars() {
+
+    for(let i=0;i<4;i++) {
+
+        let element =
+            document.getElementById(
+                "topicStars" + i
+            );
+
+        if(completed[i]) {
+
+            element.textContent =
+                "★★★★★";
+
+        } else {
+
+            element.textContent =
+                "☆☆☆☆☆";
+
+        }
+
+    }
+
+}
+
+
+
+
+function updateBadges() {
+
+    for(let i=0;i<4;i++) {
+
+        let badge =
+            document.getElementById(
+                "badge" + (i+1)
+            );
+
+        if(completed[i]) {
+
+            badge.classList.add("unlocked");
+
+        }
+
+    }
+
+}
+
+
+
+function startLesson(index) {
+
+    currentLesson = index;
+
+    currentQuestion = 0;
+
+    questionAnswered = false;
+
+    document.getElementById(
+        "homePage"
+    ).style.display = "none";
+
+    document.getElementById(
+        "quizScreen"
+    ).style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    showQuestion();
+
+}
+
+
+
+function startRandomLesson() {
+
+    let random =
+        Math.floor(
+            Math.random() * lessons.length
+        );
+
+    startLesson(random);
+
+}
+
+
+
+function showQuestion() {
+
+    let lesson =
+        lessons[currentLesson];
+
+    let question =
+        lesson.questions[currentQuestion];
+
+
+    document.getElementById(
+        "quizTitle"
+    ).textContent = lesson.title;
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        "/5";
+
+
+    document.getElementById(
+        "quizProgress"
+    ).style.width =
+        ((currentQuestion + 1) / 5 * 100) +
+        "%";
+
+
+    document.getElementById(
+        "questionPicture"
+    ).textContent =
+        question.picture;
+
+
+    document.getElementById(
+        "questionText"
+    ).textContent =
+        question.question;
+
+
+    document.getElementById(
+        "feedback"
+    ).textContent = "";
+
+
+    document.getElementById(
+        "feedback"
+    ).className =
+        "feedback";
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "none";
+
+
+    questionAnswered = false;
+
+
+    let answerGrid =
+        document.getElementById(
+            "answerGrid"
+        );
+
+
+    answerGrid.innerHTML = "";
+
+
+    let shuffled =
+        [...question.answers]
+        .sort(() => Math.random() - .5);
+
+
+    shuffled.forEach(answer => {
+
+        let button =
+            document.createElement("button");
+
+        button.className =
+            "answer";
+
+        button.textContent =
+            answer;
+
+        button.onclick =
+            () => checkAnswer(
+                button,
+                answer
+            );
+
+        answerGrid.appendChild(
+            button
+        );
+
+    });
+
+}
+
+
+
+function checkAnswer(button, answer) {
+
+    if(questionAnswered) {
+        return;
+    }
+
+    questionAnswered = true;
+
+
+    let question =
+        lessons[currentLesson]
+        .questions[currentQuestion];
+
+
+    let buttons =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    buttons.forEach(btn => {
+
+        btn.disabled = true;
+
+        if(
+            btn.textContent ===
+            question.correct
+        ) {
+
+            btn.classList.add(
+                "correct"
+            );
+
+        }
+
+    });
+
+
+    if(answer === question.correct) {
+
+        button.classList.add(
+            "correct"
+        );
+
+        stars += 2;
+
+        updateStars();
+
+
+        document.getElementById(
+            "feedback"
+        ).textContent =
+            "🎉 Amazing! You got it right! +2 ⭐";
+
+
+        document.getElementById(
+            "feedback"
+        ).classList.add(
+            "correct-text"
+        );
+
+
+        createConfetti();
+
+
+    } else {
+
+        button.classList.add(
+            "wrong"
+        );
+
+
+        document.getElementById(
+            "feedback"
+        ).textContent =
+            "😊 Good try! The correct answer is " +
+            question.correct;
+
+
+        document.getElementById(
+            "feedback"
+        ).classList.add(
+            "wrong-text"
+        );
+
+    }
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "block";
+
+}
+
+
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if(
+        currentQuestion <
+        lessons[currentLesson]
+        .questions.length
+    ) {
+
+        showQuestion();
+
+    } else {
+
+        completeLesson();
+
+    }
+
+}
+
+
+function completeLesson() {
+
+    completed[currentLesson] =
+        true;
+
+
+    localStorage.setItem(
+        "mathCompleted",
+        JSON.stringify(completed)
+    );
+
+
+    updateProgress();
+
+    updateTopicStars();
+
+    updateBadges();
+
+
+    document.getElementById(
+        "quizScreen"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "homePage"
+    ).style.display =
+        "block";
+
+
+    showReward();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+
+function showReward() {
+
+    let titles = [
+        "🔢 Number Explorer!",
+        "➕ Addition Hero!",
+        "➖ Subtraction Star!",
+        "🔺 Shape Master!"
+    ];
+
+
+    let messages = [
+        "You completed the Counting Castle!",
+        "You completed the Addition Garden!",
+        "You completed the Subtraction Bakery!",
+        "You completed Shape Space!"
+    ];
+
+
+    document.getElementById(
+        "rewardTitle"
+    ).textContent =
+        titles[currentLesson];
+
+
+    document.getElementById(
+        "rewardMessage"
+    ).textContent =
+        messages[currentLesson];
+
+
+    document.getElementById(
+        "rewardStars"
+    ).textContent =
+        "⭐⭐⭐⭐⭐";
+
+
+    document.getElementById(
+        "rewardModal"
+    ).classList.add(
+        "show"
+    );
+
+
+    createConfetti();
+
+}
+
+
+
+function closeReward() {
+
+    document.getElementById(
+        "rewardModal"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+
+function showHowToPlay() {
+
+    document.getElementById(
+        "howModal"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+function closeHowToPlay() {
+
+    document.getElementById(
+        "howModal"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+
+function goHome() {
+
+    document.getElementById(
+        "quizScreen"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "homePage"
+    ).style.display =
+        "block";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+
+function scrollToLessons() {
+
+    document.getElementById(
+        "lessons"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+
+
+function createConfetti() {
+
+    let symbols = [
+        "⭐",
+        "🎉",
+        "✨",
+        "🌟",
+        "💜",
+        "💙",
+        "💛",
+        "💚"
+    ];
+
+
+    for(
+        let i = 0;
+        i < 30;
+        i++
+    ) {
+
+        let piece =
+            document.createElement(
+                "div"
+            );
+
+
+        piece.className =
+            "confetti";
+
+
+        piece.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+
+        piece.style.left =
+            Math.random() * 100 +
+            "vw";
+
+
+        piece.style.fontSize =
+            (10 +
+            Math.random() * 15) +
+            "px";
+
+
+        piece.style.animationDuration =
+            (2 +
+            Math.random() * 2) +
+            "s";
+
+
+        document.body.appendChild(
+            piece
+        );
+
+
+        setTimeout(() => {
+
+            piece.remove();
+
+        },4000);
+
+    }
+
+}
+
+
+
+window.onclick = function(event) {
+
+    let reward =
+        document.getElementById(
+            "rewardModal"
+        );
+
+    let how =
+        document.getElementById(
+            "howModal"
+        );
+
+
+    if(event.target === reward) {
+
+        reward.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    if(event.target === how) {
+
+        how.classList.remove(
+            "show"
+        );
+
+    }
+
+};
+
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if(
+            event.key === "Escape"
+        ) {
+
+            closeReward();
+
+            closeHowToPlay();
+
+        }
+
+    }
+);
+
+
+
+setInterval(
+    function() {
+
+        let counter =
+            document.getElementById(
+                "starCount"
+            );
+
+
+        counter.style.transform =
+            "scale(1.12)";
+
+
+        setTimeout(
+            function() {
+
+                counter.style.transform =
+                    "scale(1)";
+
+            },
+            180
+        );
+
+    },
+    5000
+);
+
+
+
+window.addEventListener(
+    "beforeunload",
+    function() {
+
+        localStorage.setItem(
+            "mathStars",
+            stars
+        );
+
+        localStorage.setItem(
+            "mathCompleted",
+            JSON.stringify(
+                completed
+            )
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
